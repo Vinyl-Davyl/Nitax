@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
     }
   }));
 
-let USERS = [], STATUSES = ['Active', 'Pending', 'Blocked'];
+let USERS = [], STATUSES = ['Completed', 'In-Progress', 'Incomplete'];
 for(let i=0;i<14;i++) {
     USERS[i] = {
         name: faker.name.findName(),
@@ -82,8 +82,8 @@ function MTable() {
         <TableHead>
           <TableRow>
             <TableCell className={classes.tableHeaderCell}>User Info</TableCell>
-            <TableCell className={classes.tableHeaderCell}>Job Info</TableCell>
-            <TableCell className={classes.tableHeaderCell}>Joining Date</TableCell>
+            <TableCell className={classes.tableHeaderCell}>Email</TableCell>
+            <TableCell className={classes.tableHeaderCell}>Date</TableCell>
             <TableCell className={classes.tableHeaderCell}>Status</TableCell>
           </TableRow>
         </TableHead>
@@ -97,24 +97,22 @@ function MTable() {
                       </Grid>
                       <Grid item lg={10}>
                           <Typography className={classes.name}>{row.name}</Typography>
-                          <Typography color="textSecondary" variant="body2">{row.email}</Typography>
                           <Typography color="textSecondary" variant="body2">{row.phone}</Typography>
                       </Grid>
                   </Grid>
                 </TableCell>
               <TableCell>
-                  <Typography color="primary" variant="subtitle2">{row.jobTitle}</Typography>
-                  <Typography color="textSecondary" variant="body2">{row.company}</Typography>
-                </TableCell>
+                <Typography color="textSecondary" variant="body2">{row.email}</Typography>
+              </TableCell>
               <TableCell>{row.joinDate}</TableCell>
               <TableCell>
                   <Typography 
                     className={classes.status}
                     style={{
                         backgroundColor: 
-                        ((row.status === '' && 'green') ||
-                        (row.status === 'Pending' && 'blue') ||
-                        (row.status === 'Blocked' && 'orange'))
+                        ((row.status === 'Completed' && 'green') ||
+                        (row.status === 'In-Progress' && 'yellow') ||
+                        (row.status === 'Incomplete' && 'orange'))
                     }}
                   >{row.status}</Typography>
                 </TableCell>
