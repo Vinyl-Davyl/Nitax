@@ -9,7 +9,6 @@ import {
     TableHead,
     TableRow,
     Paper,
-    Avatar,
     Grid,
     Typography,
     TablePagination,
@@ -27,12 +26,6 @@ const useStyles = makeStyles((theme) => ({
     },
     tableHeaderCell: {
         fontWeight: 'bold',
-        backgroundColor: theme.palette.primary.dark,
-        color: theme.palette.getContrastText(theme.palette.primary.dark)
-    },
-    avatar: {
-        backgroundColor: theme.palette.primary.light,
-        color: theme.palette.getContrastText(theme.palette.primary.light)
     },
     name: {
         fontWeight: 'bold',
@@ -83,6 +76,7 @@ function MTable() {
           <TableRow>
             <TableCell className={classes.tableHeaderCell}>User Info</TableCell>
             <TableCell className={classes.tableHeaderCell}>Email</TableCell>
+            <TableCell className={classes.tableHeaderCell}>Phone</TableCell>
             <TableCell className={classes.tableHeaderCell}>Date</TableCell>
             <TableCell className={classes.tableHeaderCell}>Status</TableCell>
           </TableRow>
@@ -91,20 +85,17 @@ function MTable() {
           {USERS.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => (
             <TableRow key={row.name}>
               <TableCell>
-                  <Grid container>
-                      <Grid item lg={2}>
-                          <Avatar alt={row.name} src='.' className={classes.avatar}/>
-                      </Grid>
-                      <Grid item lg={10}>
-                          <Typography className={classes.name}>{row.name}</Typography>
-                          <Typography color="textSecondary" variant="body2">{row.phone}</Typography>
-                      </Grid>
-                  </Grid>
-                </TableCell>
-              <TableCell>
-                <Typography color="textSecondary" variant="body2">{row.email}</Typography>
+                {row.name}
               </TableCell>
-              <TableCell>{row.joinDate}</TableCell>
+              <TableCell>
+                {row.email}
+              </TableCell>
+              <TableCell>
+                 {row.phone}
+              </TableCell>
+              <TableCell>
+                {row.joinDate}
+                </TableCell>
               <TableCell>
                   <Typography 
                     className={classes.status}
