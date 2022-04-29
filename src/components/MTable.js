@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
       minWidth: 650,
     },
     tableContainer: {
-        borderRadius: 15,
+        borderRadius: 17,
         margin: '10px 10px',
         maxWidth: 950
     },
